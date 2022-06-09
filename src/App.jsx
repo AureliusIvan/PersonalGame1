@@ -5,10 +5,8 @@ import PageOne from './Pages/Start/Start';
 import SelectCharacter from './Pages/SelectChar/SelectChar';
 import Home from './Pages/Home/Home';
 import EatPage from './Pages/Home/Eat/EatPage';
-import Eat from './Pages/Home/Eat/Eat2';
 import Cafe from './Pages/Cafe/Cafe';
 import { AllContext } from './components/Value/CoinContext';
-import MiniGamestwo from './Pages/Home/MiniGames/ButtonApp';
 import Class from './Pages/Universitas/classroom';
 import ToStudy from './Pages/Universitas/UnivHall';
 import Library from './Pages/Universitas/library';
@@ -25,7 +23,8 @@ import Currency from './components/buttons/Currency';
 import { CreateChar } from './components/character/CharacterCard';
 import { StatFunction } from './components/templateAndFunction/statCoinFunction';
 import Player from './audio';
-
+import Drum from './Pages/Home/MiniGames/Drum/Drum';
+import MiniGamestwo from './Pages/Home/MiniGames/CardGames/CardGames';
 ///ALL audio
 import cafeSound from './components/asset/sound/cafe/BlueZones.mp3';
 import EvaluationScreen from './Pages/Eval/Eval';
@@ -230,7 +229,8 @@ function App() {
       game === 'selectchar' ||
       game === 'eat' ||
       game === 'cook' ||
-      game === 'cart'
+      game === 'cart' ||
+      game === 'drum'
     ) {
       setShowPause(false);
     } else {
@@ -245,7 +245,8 @@ function App() {
       game === 'Minigames' ||
       game === 'cook' ||
       game === 'cart' ||
-      game === 'eat'
+      game === 'eat' ||
+      game === 'drum'
     ) {
       setHideChar(false);
     } else {
@@ -440,6 +441,8 @@ function App() {
               return <ToStudy handleClick={handleClick} />;
             case 'Minigames':
               return <MiniGamestwo handleClick={handleClick} />;
+            case 'drum':
+              return <Drum />;
             case 'class':
               return <Class handleClick={handleClick} />;
             case 'library':

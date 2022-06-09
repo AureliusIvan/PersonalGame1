@@ -15,6 +15,7 @@ import { useDisclosure } from '@chakra-ui/react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Eat2 from './Eat2';
+import BackBTN from '../../../components/buttons/backBtn';
 
 function EatPage(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -22,9 +23,8 @@ function EatPage(props) {
 
   return (
     <DndProvider backend={HTML5Backend}>
-
       <Box>
-        <Button
+        {/* <Button
           zIndex={1}
           pos={'absolute'}
           top="10px"
@@ -44,7 +44,8 @@ function EatPage(props) {
             position={'absolute'}
             _hover={{ filter: 'invert(0)' }}
           />
-        </Button>
+        </Button> */}
+        <BackBTN onClick={() => props.handleClick('home')} title="Let's Eat" bgGradient="linear(to-l, green.600, blue.600)" />
         <Eat2 />
       </Box>
     </DndProvider>

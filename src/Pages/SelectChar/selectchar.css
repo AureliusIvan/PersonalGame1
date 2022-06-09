@@ -1,0 +1,11 @@
+.NextBTN {
+  z-index: 100;
+  border: 40px solid rgb(0, 0, 0, 0);
+  border-left-color: rgb(112, 112, 255);
+}
+
+.PrevBTN {
+    z-index: 100;
+    border: 40px solid rgb(0, 0, 0, 0);
+    border-right-color: rgb(112, 112, 255);
+  }

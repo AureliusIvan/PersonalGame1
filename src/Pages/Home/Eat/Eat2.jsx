@@ -21,7 +21,10 @@ import friedfish from './food/friedfish.png';
 import roastchicken from './food/roastchicken.png';
 import salad from './food/salad.png';
 import steak from './food/steak.png';
-import { StatFunction, CheckStatFull } from '../../../components/templateAndFunction/statCoinFunction';
+import {
+  StatFunction,
+  CheckStatFull,
+} from '../../../components/templateAndFunction/statCoinFunction';
 import makanbg from './food/makanbg.png';
 import nexticon from '../../../components/asset/icon/next.png';
 import previcon from '../../../components/asset/icon/prev.png';
@@ -369,7 +372,7 @@ function Eat2() {
     if (lastfood != 0) {
       StatFunction(makan, setMakan, COLLECTION[foodIndex].hunger, 0);
       CheckStatFull(makan, countMakan, setCountMakan);
-      console.log("count makan:" + countMakan);
+      console.log('count makan:' + countMakan);
 
       if (COLLECTION[foodIndex].name === 'burger') {
         setBurger(burger - 1);
@@ -410,7 +413,7 @@ function Eat2() {
         className="Eat"
         bgImage={makanbg}
         bgPos="center"
-        bgSize={"contain"}
+        bgSize={'contain'}
         overflow="hidden"
       >
         <Grid
@@ -421,7 +424,7 @@ function Eat2() {
           gap={0}
         >
           <GridItem
-            h="70px"
+            h="50px"
             className="gridItems"
             rowSpan={1}
             colSpan={3}
@@ -431,9 +434,7 @@ function Eat2() {
             textAlign={'center'}
             shadow={'2px 1px 6px #2e2e2e'}
           >
-            <Text pos={'absolute'} top="0px" left={0} right={0}>
-              Let's Eat!
-            </Text>
+            
           </GridItem>
           <GridItem className="gridItems" rowSpan={3} colSpan={3}>
             <Tooltip label={`You are ${makan}% full`} placement="top">

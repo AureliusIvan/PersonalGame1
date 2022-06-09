@@ -11,12 +11,12 @@ import {
   HStack,
 } from '@chakra-ui/react';
 import './game.css';
-import { AllContext } from '../../../components/Value/CoinContext';
+import { AllContext } from '../../../../components/Value/CoinContext';
 import {
   CoinFunction,
   StatFunction,
-  CheckStatFull
-} from '../../../components/templateAndFunction/statCoinFunction';
+  CheckStatFull,
+} from '../../../../components/templateAndFunction/statCoinFunction';
 import book from './img/book.png';
 import burger from './img/burger.png';
 import cake from './img/cake.png';
@@ -27,7 +27,9 @@ import macaron from './img/macaron.png';
 import milk from './img/milk.png';
 import './comp/onecard.css';
 import cardimg from './img/card.png';
-import BackgroundIMG from '../../Home/Eat/food/makanbg.png';
+import BackgroundIMG from './../../Eat/food/makanbg.png';
+import BackBTN from '../../../../components/buttons/backBtn';
+
 const cardImages = [
   { src: book, matched: false },
   { src: burger, matched: false },
@@ -94,7 +96,7 @@ function MiniGamestwo(props) {
     CoinFunction(coin, setCoin, 500, 0);
     StatFunction(main, setMain, 30, 0);
     StatFunction(tidur, setTidur, 0, 5);
-    
+
     CheckStatFull(main, countMain, setCountMain);
     props.handleClick('home');
   };
@@ -145,100 +147,108 @@ function MiniGamestwo(props) {
   };
 
   return (
-    <VStack
-      width={'100%'}
-      height="100vh"
-      overflow={'hidden'}
-      padding="20px"
-      className="MinigamesPage"
-      textAlign={'center'}
-      bgImage={BackgroundIMG}
-      bgSize={{ md: 'cover', base: 'contain' }}
-      bgPos="center"
-    >
-      <Text
-        bgGradient="linear(to-l, rgb(255, 128, 128), rgb(235, 83, 83))"
-        bgColor="red.400"
-        width={'400px'}
-        borderRadius="20px"
-        textAlign="center"
-        color="white"
+    <>
+      <BackBTN
+        onClick={() => props.handleClick('home')}
+        title="Let's Play"
+        bgGradient="linear(to-l, orange.400, green.400)"
+      />
+      <VStack
+        width={'100%'}
+        height="100vh"
+        overflow={'hidden'}
+        padding="20px"
+        className="MinigamesPage"
+        textAlign={'center'}
+        bgImage={BackgroundIMG}
+        bgSize={{ md: 'cover', base: 'contain' }}
+        bgPos="center"
+        paddingTop={'70px'}
       >
-        Memory Card Minigames!
-      </Text>
-      <HStack>
-        <Button
+        <Text
           bgGradient="linear(to-l, rgb(255, 128, 128), rgb(235, 83, 83))"
-          border={'2px solid white'}
+          bgColor="red.400"
+          width={'400px'}
+          borderRadius="20px"
+          textAlign="center"
           color="white"
-          fontWeight={'thin'}
-          className="gamebutton"
-          onClick={shuffleCard}
         >
-          {' '}
-          New game
-        </Button>
-        <Button
-          bgGradient="linear(to-l, rgb(255, 128, 128), rgb(235, 83, 83))"
-          border={'2px solid white'}
+          Memory Card Minigames!
+        </Text>
+        <HStack>
+          <Button
+            bgGradient="linear(to-l, rgb(255, 128, 128), rgb(235, 83, 83))"
+            border={'2px solid white'}
+            color="white"
+            fontWeight={'thin'}
+            className="gamebutton"
+            onClick={shuffleCard}
+          >
+            {' '}
+            New game
+          </Button>
+          <Button
+            bgGradient="linear(to-l, rgb(255, 128, 128), rgb(235, 83, 83))"
+            border={'2px solid white'}
+            color="white"
+            fontWeight={'thin'}
+            className="gamebutton"
+            onClick={() => props.handleClick('home')}
+          >
+            {' '}
+            Exit{' '}
+          </Button>
+          <Button
+            bgColor={'red.600'}
+            border={'2px solid white'}
+            color="white"
+            fontWeight={'thin'}
+            className="gamebutton"
+            disabled={turns < 5}
+            onClick={done}
+          >
+            {' '}
+            Done!{' '}
+          </Button>
+        </HStack>
+        <Grid
+          templateRows="repeat(4, 1fr)"
+          templateColumns="repeat(4, 1fr)"
+          gap={2}
+          className="card-pic"
+          h={'100px'}
+          w="400px"
+          margin={'auto'}
+          left="0"
+          right={'0'}
+          top="150px"
+          bottom={0}
+        >
+          {cards.map(card => (
+            <Onecard
+              key={card.id}
+              card={card}
+              handleChoice={handleChoice}
+              flipped={card === choice1 || card === choice2 || card.matched}
+              disabled={disabled}
+            />
+          ))}
+        </Grid>
+        <Text
+          pos={'absolute'}
+          bottom={'10px'}
+          bgGradient="linear(to-r, red.500, blue.700)"
+          bgColor="red.400"
+          width={'400px'}
+          borderRadius="20px"
+          textAlign="center"
           color="white"
-          fontWeight={'thin'}
-          className="gamebutton"
-          onClick={() => props.handleClick('home')}
+          className="turns"
         >
-          {' '}
-          Exit{' '}
-        </Button>
-        <Button
-        bgColor={"red.600"}
-          border={'2px solid white'}
-          color="white"
-          fontWeight={'thin'}
-          className="gamebutton"
-          disabled={turns < 5}
-          onClick={done}
-        >
-          {' '}
-          Done!{' '}
-        </Button>
-      </HStack>
-      <Grid
-        templateRows="repeat(4, 1fr)"
-        templateColumns="repeat(4, 1fr)"
-        gap={2}
-        className="card-pic"
-        h={'100px'}
-        w="400px"
-        margin={'auto'}
-        left="0"
-        right={'0'}
-        top="150px"
-        bottom={0}
-      >
-        {cards.map(card => (
-          <Onecard
-            key={card.id}
-            card={card}
-            handleChoice={handleChoice}
-            flipped={card === choice1 || card === choice2 || card.matched}
-            disabled={disabled}
-          />
-        ))}
-      </Grid>
-      <Text
-        pos={'absolute'}
-        bottom={'10px'}
-        bgGradient="linear(to-r, red.500, blue.700)"
-        bgColor="red.400"
-        width={'400px'}
-        borderRadius="20px"
-        textAlign="center"
-        color="white"
-        className="turns"
-      >
-        Turns:{turns}
-      </Text>
-    </VStack>
+          Turns:{turns}
+        </Text>
+      </VStack>
+    </>
   );
 }
 

@@ -29,6 +29,7 @@ import tomatoimg from '../../Mall/shoppingCart/itemimage/tomato.png';
 import stoveoff from './asset/Stoveoff.png';
 import stoveon from './asset/Stoveon.gif';
 import bg from '../../../components/background/Charselect.png';
+import BackBTN from '../../../components/buttons/backBtn';
 function FoodCard(props) {
   const { foodIndex, setFoodIndex } = useContext(AllContext);
 
@@ -76,7 +77,12 @@ function FoodCard(props) {
       padding={'10px'}
       justifyContent="space-between"
     >
-      <Button marginTop={'30px'}variant={'ghost'} bgColor={'null'} onClick={prevFood}>
+      <Button
+        marginTop={'30px'}
+        variant={'ghost'}
+        bgColor={'null'}
+        onClick={prevFood}
+      >
         {'<'}
       </Button>
       <Image
@@ -403,37 +409,11 @@ function Masak(props) {
       width="100%"
       h="100vh"
     >
-      <Flex
-        width={'100%'}
-        height="50px"
-        pos={'absolute'}
-        top="0"
-        margin={'auto'}
-        left="0"
-        right={0}
-      >
-        <Button
-          zIndex={1}
-          pos={'absolute'}
-          top="10px"
-          left={'10px'}
-          fontWeight={0}
-          borderRadius={'50%'}
-          h="50px"
-          w="50px"
-          padding={0}
-          bgColor="blue"
-          onClick={() => props.handleClick('home')}
-        >
-          <ArrowBackIcon
-            filter="invert(1)"
-            h="50px"
-            w={'50px'}
-            position={'absolute'}
-            _hover={{ filter: 'invert(0)' }}
-          />
-        </Button>
-      </Flex>
+      <BackBTN
+        onClick={() => props.handleClick('home')}
+        title="Let's Cook"
+        bgGradient="linear(to-l, red.200, red.500)"
+      />
       <Grid
         marginTop={'20px'}
         h="100%"

@@ -19,9 +19,9 @@ import InputHere from './inputCharacter';
 import next from '../../components/asset/icon/next.png';
 import prev from '../../components/asset/icon/prev.png';
 import mulai from '../../components/asset/icon/start.png';
-
 import mainBG from '../../components/background/Charselect.png';
 import mukbang from '../../components/background/Mukbangbg.png';
+import './selectchar.css';
 
 function SelectCharacter(props) {
   const { start, setStart } = useContext(AllContext);
@@ -86,33 +86,34 @@ function SelectCharacter(props) {
             />
           </Flex>
           <HStack spacing="100px" justify="center" mt={{ sm: '50', base: '0' }}>
-            <Image
+            <Box
+              className="PrevBTN"
               zIndex={5}
-              src={prev}
-              transform="translateY(180px)"
-              width={{ md: '120px', base: '90px' }}
-              position="relative"
+              transform="translate(-200px, 180px)"
+              width={{ md: '120px', base: '30px' }}
+              position="absolute"
               cursor="pointer"
-              transition="0.3s"
-              _hover={{ transform: 'scale(1.1) translateY(160px)' }}
+              _hover={{ transform: 'scale(1.05) translate(-200px, 180px)' }}
+              transition="0.5s"
               onClick={() => {
                 handleCharPrev();
               }}
-            />
-            <Box></Box>
-            <Image
+            ></Box>
+            <Image />
+            <Box
+              className="NextBTN"
               zIndex={5}
-              src={next}
-              transform="translateY(180px)"
-              width={{ md: '120px', base: '90px' }}
-              position="relative"
+              transform="translate(150px, 180px)"
+              width={{ md: '120px', base: '30px' }}
+              position="absolute"
               cursor="pointer"
-              _hover={{ transform: 'scale(1.1) translateY(160px)' }}
+              _hover={{ transform: 'scale(1.05) translate(150px, 180px)' }}
               transition="0.5s"
               onClick={() => {
                 handleCharNext();
               }}
-            />
+            ></Box>
+            <Image />
           </HStack>
         </Flex>
       </Flex>
@@ -139,7 +140,7 @@ function SelectCharacter(props) {
           disabled={filled ? false : true}
         >
           <Tooltip
-            display={filled ? "none" : "block"}
+            display={filled ? 'none' : 'block'}
             hasArrow
             label="ISI NAMA DAHULU"
             shouldWrapChildren
